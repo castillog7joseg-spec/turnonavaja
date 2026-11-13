@@ -1,0 +1,23 @@
+# Blueprint de Render para el backend. Los valores secretos se cargan a mano en el panel.
+services:
+  - type: web
+    name: turnonavaja-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /salud
+    plan: free
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: INITIAL_ADMIN_EMAIL
+        sync: false
+      - key: INITIAL_ADMIN_PASSWORD
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
